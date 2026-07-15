@@ -3,34 +3,42 @@
 <head>
   <title>Stormwater Agent Vault</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body style="font-family:Arial;max-width:1200px;margin:auto;padding:40px">
-  <h1>Stormwater Agent Vault</h1>
 
-  <h2>AI-Powered Stormwater Knowledge Management</h2>
+<h1>Stormwater Agent Vault</h1>
+<p>AI-powered stormwater knowledge base.</p>
 
-  <p>
-    Upload permits, SWPPPs, SOPs, inspection reports,
-    engineering standards, and regulatory documents.
-  </p>
+<h2>Upload Documents</h2>
 
-  <h3>Features</h3>
+<input
+  type="file"
+  id="fileUpload"
+  multiple
+  accept=".pdf,.doc,.docx,.txt,.xlsx,.csv"
+/>
 
-  <ul>
-    <li>Document Upload</li>
-    <li>PDF Text Extraction</li>
-    <li>Automatic Text Chunking</li>
-    <li>Vector Search</li>
-    <li>AI Chat Assistant</li>
-    <li>MS4 Compliance Knowledge Base</li>
-    <li>SWPPP Search & Retrieval</li>
-  </ul>
+<button onclick="showFiles()">
+  Upload
+</button>
 
-  <h3>Status</h3>
+<h3>Uploaded Files</h3>
+<ul id="fileList"></ul>
 
-  <p>
-    Site successfully deployed on Cloudflare Pages.
-  </p>
+<script>
+function showFiles() {
+  const files = document.getElementById("fileUpload").files;
+  const list = document.getElementById("fileList");
+
+  list.innerHTML = "";
+
+  for (let i = 0; i < files.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = files[i].name;
+    list.appendChild(li);
+  }
+}
+</script>
+
 </body>
 </html>
